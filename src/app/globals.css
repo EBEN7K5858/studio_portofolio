@@ -145,7 +145,7 @@
   border: 1px solid var(--accent);
   border-radius: 50%;
   position: absolute;
-  transform: translate(-11px, -11px);
+  transform: translate(-14px, -14px);
 }
 
 .terminal-card {

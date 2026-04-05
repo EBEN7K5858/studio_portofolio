@@ -22,7 +22,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
     >
-      <Link href={`/projects/${project.slug}`} className="group block h-full bg-[var(--bg-surface)] border border-[var(--border)] transition-all duration-300 hover:border-[var(--accent)]/60 hover:shadow-[var(--accent-glow)]">
+      <Link href={`/projects/${project.slug}`} className="group block h-full bg-[var(--bg-surface)] border border-[var(--border)] transition-all duration-300 hover:border-accent hover:shadow-[var(--accent-glow)]">
         <div className="relative aspect-[16/9] overflow-hidden">
           <Image 
             src={project.image} 

@@ -30,13 +30,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
-  if (!mounted) {
-    return <div className="invisible">{children}</div>;
-  }
-
+  // The Provider must ALWAYS be rendered, otherwise hooks like useTheme() 
+  // in children will fail during the initial render or SSR.
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <div className={mounted ? "contents" : "invisible"}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }
