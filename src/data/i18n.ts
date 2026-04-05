@@ -10,7 +10,7 @@ export const i18n = {
     },
     hero: {
       eyebrow: '// Computer Engineering Student · EMSI Casablanca',
-      title1: 'I build things',
+      title1: 'I build',
       title2: "before I'm asked to.",
       subtitle: 'Builder · Aspiring Cybersecurity Analyst · 2nd Year',
       description: 'Automation pipelines, mobile apps, and content systems shipped for real clients — not sandboxes. Currently seeking an internship where engineering and security intersect.',
