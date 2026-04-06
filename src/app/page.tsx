@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Send, Check, Download } from 'lucide-react';
+import { ChevronDown, Send, Check, Download, Mail, Github, Linkedin } from 'lucide-react';
 import { useLang } from '@/contexts/LangContext';
 import { projects } from '@/data/projects';
 import { blogPosts } from '@/data/blog';
@@ -352,22 +352,53 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div>
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.contact.label}</motion.p>
-            <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-6xl mb-12 font-bold leading-tight">{t.contact.title}</motion.h2>
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-xl text-[var(--text-secondary)] mb-16 max-w-md leading-relaxed">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              className="text-4xl md:text-6xl mb-12 font-bold leading-tight"
+            >
+              <span className="text-gradient block mb-4">{lang === 'fr' ? 'Une expertise' : 'An expertise'}</span>
+              {t.contact.title}
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ delay: 0.1 }}
+              className="text-xl md:text-2xl text-[var(--text-secondary)] mb-16 max-w-xl leading-relaxed font-light"
+            >
               {t.contact.availability}
             </motion.p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-14">
+            <div className="space-y-10">
               {[
-                { name: 'Email', val: 'eben.kambou@gmail.com', href: 'mailto:eben.kambou@gmail.com' },
-                { name: 'LinkedIn', val: 'eben-ezer-kambou-63594321b', href: 'https://www.linkedin.com/in/eben-ezer-kambou-63594321b' },
-                { name: 'GitHub', val: 'EBEN7K5858', href: 'https://github.com/EBEN7K5858' }
+                { name: 'Email', val: 'eben.kambou@gmail.com', href: 'mailto:eben.kambou@gmail.com', color: '#EA4335', icon: Mail },
+                { name: 'LinkedIn', val: 'Eben-Ezer KAMBOU', href: 'https://www.linkedin.com/in/eben-ezer-kambou-63594321b', color: '#0077B5', icon: Linkedin },
+                { name: 'GitHub', val: 'EBEN7K5858', href: 'https://github.com/EBEN7K5858', color: 'currentColor', icon: Github }
               ].map((link, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
-                  <div className="text-[10px] font-code text-[var(--text-muted)] uppercase mb-4 tracking-[0.3em] font-bold">{link.name}</div>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors break-words block">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, x: -20 }} 
+                  whileInView={{ opacity: 1, x: 0 }} 
+                  viewport={{ once: true }} 
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center space-x-6 group"
+                >
+               <div className="w-14 h-14 rounded-2xl bg-[var(--bg-primary)] border border-[var(--accent)]/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[var(--accent)]/30 transition-all duration-300 shadow-xl">
+                  <link.icon className="w-7 h-7 transition-colors duration-300" style={{ color: link.color }} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-code text-[var(--text-muted)] uppercase tracking-[0.2em] mb-1 font-bold">{link.name}</p>
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-lg md:text-xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors break-all md:break-normal"
+                  >
                     {link.val}
                   </a>
+                </div>
                 </motion.div>
               ))}
             </div>
@@ -450,3 +481,4 @@ export default function Home() {
 // Profil2 Build
 // Final Thumbnail Reset Build
 // Favicon Update Build
+// Solution Positioning Build
