@@ -32,7 +32,20 @@ const Navbar = () => {
     { name: t.nav.contact, href: '/#contact' },
   ];
 
-  const handleLinkClick = () => setIsOpen(false);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <nav className={`fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-500 rounded-full px-8 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-6'}`}>
@@ -93,68 +106,68 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Dark Backdrop */}
+            {/* Very Dark Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[90] lg:hidden"
+              className="fixed inset-0 bg-[#0A0A0B]/90 backdrop-blur-xl z-[90] lg:hidden"
             />
             
             {/* Menu Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20, x: '-50%' }}
-              animate={{ opacity: 1, scale: 1, y: 0, x: '-50%' }}
-              exit={{ opacity: 0, scale: 0.9, y: 20, x: '-50%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-1/2 left-1/2 w-[92%] max-w-[400px] glass z-[100] lg:hidden flex flex-col p-8 rounded-[3rem] shadow-3xl max-h-[85vh] overflow-y-auto"
-              style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
-            >
-              <div className="flex justify-between items-center mb-10">
-                <span className="font-headline text-2xl font-bold text-[var(--accent)]">SEK</span>
-                <button 
-                  onClick={() => setIsOpen(false)} 
-                  className="p-3 bg-white/10 rounded-full text-[var(--text-primary)]"
-                  aria-label="Close menu"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              
-              <nav className="flex flex-col space-y-4">
-                {navLinks.map((link, idx) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
+            <div className="fixed inset-0 z-[100] lg:hidden flex items-center justify-center p-6 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="w-full max-w-[400px] glass p-8 rounded-[3rem] shadow-3xl pointer-events-auto border border-white/10"
+              >
+                <div className="flex justify-between items-center mb-10">
+                  <span className="font-headline text-2xl font-bold text-[var(--accent)]">SEK</span>
+                  <button 
+                    onClick={() => setIsOpen(false)} 
+                    className="p-3 bg-white/10 rounded-full text-[var(--text-primary)]"
+                    aria-label="Close menu"
                   >
-                    <Link 
-                      href={link.href}
-                      onClick={handleLinkClick}
-                      className="text-3xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block py-2"
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
-              
-              <div className="mt-8 pt-8 border-t border-[var(--accent)]/10 flex flex-col space-y-8">
-                <div className="flex items-center space-x-6">
-                  <LangToggle />
-                  <ThemeToggle />
+                    <X className="w-6 h-6" />
+                  </button>
                 </div>
-                <a 
-                  href="/assets/CV_Sansan_KAMBOU.pdf" 
-                  download
-                  className="btn-primary py-4 px-10 text-center text-sm rounded-full w-full font-bold shadow-xl"
-                >
-                  {t.nav.cv}
-                </a>
-              </div>
-            </motion.div>
+                
+                <nav className="flex flex-col space-y-4">
+                  {navLinks.map((link, idx) => (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                    >
+                      <Link 
+                        href={link.href}
+                        onClick={handleLinkClick}
+                        className="text-3xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block py-2"
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+                
+                <div className="mt-8 pt-8 border-t border-[var(--accent)]/10 flex flex-col space-y-8">
+                  <div className="flex items-center space-x-6">
+                    <LangToggle />
+                    <ThemeToggle />
+                  </div>
+                  <a 
+                    href="/assets/CV_Sansan_KAMBOU.pdf" 
+                    download
+                    className="btn-primary py-4 px-10 text-center text-sm rounded-full w-full font-bold shadow-xl"
+                  >
+                    {t.nav.cv}
+                  </a>
+                </div>
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
