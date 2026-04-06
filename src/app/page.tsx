@@ -358,7 +358,6 @@ export default function Home() {
               viewport={{ once: true }} 
               className="text-4xl md:text-6xl mb-12 font-bold leading-tight"
             >
-              <span className="text-gradient block mb-4">{lang === 'fr' ? 'Une expertise' : 'An expertise'}</span>
               {t.contact.title}
             </motion.h2>
             <motion.p 
@@ -482,3 +481,4 @@ export default function Home() {
 // Final Thumbnail Reset Build
 // Favicon Update Build
 // Solution Positioning Build
+// Builder Spirit Build

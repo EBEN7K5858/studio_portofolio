@@ -60,8 +60,8 @@ export const i18n = {
     },
     contact: {
       label: '// 05 — Contact',
-      title: 'The solution to your technical challenges.',
-      availability: "Do you have an innovative project or a complex cybersecurity challenge? Are you looking for a reliable technical partner to build tomorrow's solutions? I transform your problems into concrete, secure architectures. Without pretension, my mission is to provide the exact technical response your needs require.",
+      title: "Let's build something.",
+      availability: "Do you need to automate your processes or secure your workflows? I don't just code; I design robust tools that meet your real needs. My approach is simple: transforming your challenges into reliable and secure technical solutions, while continuously learning at the heart of your projects.",
       placeholderName: 'Name',
       placeholderEmail: 'Email',
       placeholderMessage: 'Message',
@@ -133,8 +133,8 @@ export const i18n = {
     },
     contact: {
       label: '// 05 — Contact',
-      title: 'La réponse à vos défis techniques.',
-      availability: "Vous avez un projet innovant ou un défi complexe en cybersécurité ? Vous cherchez une expertise technique fiable pour construire vos solutions de demain ? Je m'engage à transformer vos problématiques en architectures concrètes et sécurisées. Sans prétention, ma mission est d'apporter la réponse technique juste à vos besoins.",
+      title: 'Construisons quelque chose.',
+      availability: "Vous avez besoin d'automatiser vos processus ou de sécuriser vos flux de travail ? Je ne me contente pas de coder, je conçois des outils robustes qui répondent à vos besoins réels. Mon approche est simple : transformer vos défis en solutions techniques fiables et sécurisées, tout en continuant d'apprendre au cœur de vos projets.",
       placeholderName: 'Nom',
       placeholderEmail: 'Email',
       placeholderMessage: 'Message',
