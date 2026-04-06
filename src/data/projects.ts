@@ -31,7 +31,7 @@ export const projects: Project[] = [
     },
     tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'UX Design'],
     color_accent: '#00D4FF',
-    image: 'https://picsum.photos/seed/traley/800/450',
+    image: '/assets/traley.png',
     architecture: [
       { tool: 'Flutter', desc: { en: 'Mobile Interface', fr: 'Interface Mobile' } },
       { tool: 'Firebase Auth', desc: { en: 'Secure Access', fr: 'Accès Sécurisé' } },
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     },
     tags: ['Python', 'yt-dlp', 'FFmpeg', 'Faster-Whisper', 'Gemini API', 'Google Colab'],
     color_accent: '#00FFB3',
-    image: 'https://picsum.photos/seed/clipmaker/800/450',
+    image: '/assets/clipmaker.png',
     architecture: [
       { tool: 'yt-dlp', desc: { en: 'Source Fetcher', fr: 'Récupérateur Source' } },
       { tool: 'FFmpeg', desc: { en: 'Audio Extractor', fr: 'Extracteur Audio' } },
@@ -130,11 +130,11 @@ export const projects: Project[] = [
     },
     description: {
       en: 'An automated pedagogical content pipeline for a Christian music e-learning platform in Casablanca. YouTube videos are transcribed locally via Faster-Whisper, then processed by Gemini Flash to produce 7 structured pedagogical columns across 7 disciplines: Singing, Piano, Guitar, Sound Engineering, Worship Leading, Composition, Administration.',
-      fr: "Un pipeline de contenu pédagogique automatisé pour une plateforme d'apprentissage de la musique chrétienne à Casablanca. Les vidéos YouTube sont transcrites localement, puis traitées par Gemini Flash pour produire 7 colonnes structurées dans 7 disciplines."
+      fr: "Un pipeline de contenu pédagogique automatisé pour une plateforme d'apprentissage de la musique chrétienne à Casablanca. Les vidéos YouTube sont transcrites localement via Faster-Whisper, puis traitées par Gemini Flash pour produire 7 colonnes pédagogiques structurées à travers 7 disciplines : Chant, Piano, Guitare, Ingénierie du Son, Conduite de Louange, Composition, Administration."
     },
     tags: ['Python', 'Faster-Whisper', 'Gemini Flash', 'NLP', 'Curriculum Design'],
     color_accent: '#FFB300',
-    image: 'https://picsum.photos/seed/chadah/800/450',
+    image: '/assets/chadah.png',
     architecture: [
       { tool: 'Faster-Whisper', desc: { en: 'Transcription', fr: 'Transcription' } },
       { tool: 'Gemini Flash', desc: { en: 'Curriculum Gen', fr: 'Génération Curriculum' } },
@@ -178,11 +178,11 @@ export const projects: Project[] = [
     },
     description: {
       en: 'A modular content automation pipeline: structured .docx document production, platform-ready messages for distribution channels (WhatsApp, social), and a long-form audio processing pipeline (compression, format conversion, voice optimization via fre:ac/LAME). Reusable and adaptable to any organization or recurring content workflow.',
-      fr: "Un pipeline modulaire d'automatisation : production de documents .docx, messages prêts pour les canaux de distribution et traitement audio longue durée (compression, conversion, optimisation vocale via fre:ac/LAME)."
+      fr: "Un pipeline modulaire d'automatisation de contenu : production structurée de documents .docx, messages adaptés pour les canaux de distribution (WhatsApp, réseaux sociaux) et traitement audio longue durée (compression, conversion de format, optimisation vocale via fre:ac/LAME). Réutilisable et adaptable à toute organisation ou flux de production de contenu récurrent."
     },
     tags: ['Python-docx', 'FFmpeg', 'fre:ac/LAME', 'Automation', 'Content Distribution'],
     color_accent: '#FF6B6B',
-    image: 'https://picsum.photos/seed/content/800/450',
+    image: '/assets/content.png',
     architecture: [
       { tool: 'Python-docx', desc: { en: 'Doc Generation', fr: 'Génération Doc' } },
       { tool: 'LAME', desc: { en: 'Audio Optimization', fr: 'Optimisation Audio' } },

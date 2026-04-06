@@ -59,10 +59,27 @@ export default function Home() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('https://formspree.io/f/mojpyywn', { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+        form.reset();
+      }
+    } catch (error) {
+      console.error("Erreur d'envoi :", error);
+    }
   };
 
   const stack = {
@@ -71,7 +88,7 @@ export default function Home() {
     cat3: ['Linux Ubuntu', 'CLI Administration', 'Firebase Auth', 'Security Rules', 'Cybersecurity']
   };
 
-  const staggerContainer = {
+  const staggerContainer: any = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -81,7 +98,7 @@ export default function Home() {
     }
   };
 
-  const fadeInUp = {
+  const fadeInUp: any = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
   };
@@ -91,37 +108,37 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="min-h-screen flex items-center px-6 md:px-12 pt-40 pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-10 gap-16 items-center">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="show"
             className="lg:col-span-6 z-10"
           >
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="font-code text-xs text-[var(--accent)] mb-10 uppercase tracking-[0.4em] block"
             >
               {t.hero.eyebrow}
             </motion.p>
-            <motion.h1 
+            <motion.h1
               variants={fadeInUp}
               className="text-hero font-bold tracking-tighter mb-10 whitespace-pre-line leading-tight"
             >
-              {t.hero.title1} <span className="text-[var(--accent)]">{lang === 'en' ? 'things' : 'construis'}</span>{"\n"}{t.hero.title2}
+              {t.hero.title1} <span className="text-[var(--accent)]">{lang === 'en' ? 'things' : 'des choses'}</span>{"\n"}{t.hero.title2}
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10 font-medium leading-relaxed max-w-2xl"
             >
               {t.hero.subtitle}
             </motion.p>
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="max-w-xl text-lg text-[var(--text-secondary)]/80 mb-14 leading-relaxed"
             >
               {t.hero.description}
             </motion.p>
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="flex flex-wrap gap-8"
             >
@@ -133,7 +150,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -148,7 +165,7 @@ export default function Home() {
               <pre className="font-code text-sm text-[var(--text-secondary)] leading-loose">
                 <code>
                   {terminalText}
-                  <motion.span 
+                  <motion.span
                     animate={{ opacity: [0, 1, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}
                     className="inline-block w-2.5 h-6 bg-[var(--accent)] align-middle ml-2"
@@ -161,13 +178,13 @@ export default function Home() {
 
         <AnimatePresence>
           {showScrollIcon && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
             >
-              <motion.div 
+              <motion.div
                 animate={{ y: [0, 15, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -179,9 +196,9 @@ export default function Home() {
       </section>
 
       {/* 2. ABOUT SECTION */}
-      <section id="about" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/10">
+      <section id="about" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/10 overflow-hidden relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -189,18 +206,20 @@ export default function Home() {
             className="relative"
           >
             <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[var(--radius)] glass p-3">
-              <Image 
-                src="https://picsum.photos/seed/kambou/800/1000" 
+              <Image
+                src="/assets/profile.jpg"
                 alt="Sansan Eben-Ezer KAMBOU"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover rounded-[calc(var(--radius)-1rem)]"
+                priority
               />
             </div>
             <div className="absolute -bottom-12 -right-12 w-3/4 h-3/4 bg-[var(--accent)]/15 blur-[120px] -z-10" />
           </motion.div>
 
           <div>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -208,7 +227,7 @@ export default function Home() {
             >
               {t.about.label}
             </motion.p>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -228,7 +247,7 @@ export default function Home() {
                 { val: '2nd', lbl: t.about.stat2 },
                 { val: '2', lbl: t.about.stat3 }
               ].map((stat, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -246,20 +265,20 @@ export default function Home() {
       </section>
 
       {/* 3. TECH STACK SECTION */}
-      <section id="stack" className="py-40 px-6 md:px-12">
+      <section id="stack" className="py-40 px-6 md:px-12 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-32">
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.stack.label}</motion.p>
             <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold">{t.stack.title}</motion.h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
             {[
               { title: t.stack.cat1, items: stack.cat1 },
               { title: t.stack.cat2, items: stack.cat2 },
               { title: t.stack.cat3, items: stack.cat3 }
             ].map((cat, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -272,7 +291,7 @@ export default function Home() {
                 </h3>
                 <div className="flex flex-wrap gap-5 justify-center">
                   {cat.items.map((item, i) => (
-                    <motion.span 
+                    <motion.span
                       key={item}
                       className="skill-tag"
                     >
@@ -287,7 +306,7 @@ export default function Home() {
       </section>
 
       {/* 4. PROJECTS SECTION */}
-      <section id="projects" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/5">
+      <section id="projects" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/5 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-32 gap-10">
             <div>
@@ -308,7 +327,7 @@ export default function Home() {
       </section>
 
       {/* 5. WRITING SECTION */}
-      <section id="blog" className="py-40 px-6 md:px-12">
+      <section id="blog" className="py-40 px-6 md:px-12 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-32 gap-10">
             <div>
@@ -319,7 +338,7 @@ export default function Home() {
               {lang === 'en' ? 'Visit Blog' : 'Visiter le Blog'} <span className="ml-4 group-hover:translate-x-3 transition-transform text-xl">→</span>
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {blogPosts.map((post, idx) => (
               <BlogCard key={post.slug} post={post} index={idx} />
@@ -329,7 +348,7 @@ export default function Home() {
       </section>
 
       {/* 6. CONTACT SECTION */}
-      <section id="contact" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/10">
+      <section id="contact" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/10 overflow-hidden relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div>
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.contact.label}</motion.p>
@@ -337,7 +356,7 @@ export default function Home() {
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-xl text-[var(--text-secondary)] mb-16 max-w-md leading-relaxed">
               {t.contact.availability}
             </motion.p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-14">
               {[
                 { name: 'Email', val: 'eben.kambou@gmail.com', href: 'mailto:eben.kambou@gmail.com' },
@@ -354,15 +373,15 @@ export default function Home() {
             </div>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }} 
-            whileInView={{ opacity: 1, scale: 1 }} 
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="p-16 glass rounded-[var(--radius)] relative overflow-hidden"
           >
             <AnimatePresence mode="wait">
               {isSubmitted ? (
-                <motion.div 
+                <motion.div
                   key="success"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -376,31 +395,34 @@ export default function Home() {
                   <p className="text-[var(--text-secondary)] text-lg">I'll get back to you as soon as possible.</p>
                 </motion.div>
               ) : (
-                <motion.form 
+                <motion.form
                   key="form"
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  onSubmit={handleSubmit} 
+                  onSubmit={handleSubmit}
                   className="space-y-10"
                 >
                   <div className="space-y-6">
-                    <input 
-                      type="text" 
-                      placeholder={t.contact.placeholderName} 
-                      required 
-                      className="w-full bg-[var(--bg-primary)]/50 rounded-[var(--radius)] border border-[var(--border)] p-6 outline-none focus:border-[var(--accent)] focus:ring-8 focus:ring-[var(--accent-dim)] transition-all" 
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder={t.contact.placeholderName}
+                      required
+                      className="w-full bg-[var(--bg-primary)]/50 rounded-[var(--radius)] border border-[var(--border)] p-6 outline-none focus:border-[var(--accent)] focus:ring-8 focus:ring-[var(--accent-dim)] transition-all"
                     />
-                    <input 
-                      type="email" 
-                      placeholder={t.contact.placeholderEmail} 
-                      required 
-                      className="w-full bg-[var(--bg-primary)]/50 rounded-[var(--radius)] border border-[var(--border)] p-6 outline-none focus:border-[var(--accent)] focus:ring-8 focus:ring-[var(--accent-dim)] transition-all" 
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={t.contact.placeholderEmail}
+                      required
+                      className="w-full bg-[var(--bg-primary)]/50 rounded-[var(--radius)] border border-[var(--border)] p-6 outline-none focus:border-[var(--accent)] focus:ring-8 focus:ring-[var(--accent-dim)] transition-all"
                     />
-                    <textarea 
-                      rows={5} 
-                      placeholder={t.contact.placeholderMessage} 
-                      required 
-                      className="w-full bg-[var(--bg-primary)]/50 rounded-[var(--radius)] border border-[var(--border)] p-6 outline-none focus:border-[var(--accent)] focus:ring-8 focus:ring-[var(--accent-dim)] transition-all resize-none" 
+                    <textarea
+                      rows={5}
+                      name="message"
+                      placeholder={t.contact.placeholderMessage}
+                      required
+                      className="w-full bg-[var(--bg-primary)]/50 rounded-[var(--radius)] border border-[var(--border)] p-6 outline-none focus:border-[var(--accent)] focus:ring-8 focus:ring-[var(--accent-dim)] transition-all resize-none"
                     />
                   </div>
                   <button type="submit" className="btn-primary w-full flex items-center justify-center space-x-4 py-6 text-xl">

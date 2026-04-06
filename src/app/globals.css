@@ -92,6 +92,13 @@
     @apply bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent)] selection:text-[var(--bg-primary)];
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  html {
+    overflow-x: hidden;
+    width: 100%;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-bold tracking-tight;

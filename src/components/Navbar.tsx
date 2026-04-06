@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
 import { useLang } from '@/contexts/LangContext';
@@ -36,8 +37,19 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-500 rounded-full px-8 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-6'}`}>
       <div className="flex items-center justify-between">
-        <Link href="/" className="font-headline text-2xl font-bold tracking-tighter text-[var(--accent)] hover:scale-105 transition-transform">
-          SEK
+        <Link href="/" className="flex items-center space-x-3 group hover:scale-105 transition-transform">
+          <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--accent)]/50 group-hover:border-[var(--accent)] transition-colors">
+            <Image 
+              src="/assets/profile.jpg" 
+              alt="Sansan Eben-Ezer KAMBOU Profile" 
+              fill 
+              sizes="40px"
+              className="object-cover"
+            />
+          </div>
+          <span className="font-headline text-2xl font-bold tracking-tighter text-[var(--accent)] hidden sm:block">
+            SEK
+          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -88,7 +100,18 @@ const Navbar = () => {
             className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] glass rounded-[2.5rem] z-[60] lg:hidden flex flex-col p-10 overflow-hidden shadow-3xl"
           >
             <div className="flex justify-between items-center mb-16">
-              <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
+              <div className="flex items-center space-x-3">
+                <div className="relative w-12 h-12 overflow-hidden rounded-full border-2 border-[var(--accent)]/50">
+                  <Image 
+                    src="/assets/profile.jpg" 
+                    alt="Sansan Eben-Ezer KAMBOU Profile" 
+                    fill 
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
+              </div>
               <button 
                 onClick={() => setIsOpen(false)} 
                 aria-label="Close menu"

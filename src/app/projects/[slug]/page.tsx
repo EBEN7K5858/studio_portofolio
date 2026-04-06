@@ -31,6 +31,7 @@ export default function ProjectDetail() {
           src={project.image} 
           alt={project.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

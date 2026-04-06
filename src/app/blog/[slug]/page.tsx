@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { useLang } from '@/contexts/LangContext';
 import { blogPosts } from '@/data/blog';
+import ReactMarkdown from 'react-markdown';
 
 export default function BlogPostDetail() {
   const { slug } = useParams();
@@ -43,31 +44,8 @@ export default function BlogPostDetail() {
             {post.title[lang]}
           </h1>
 
-          <div className="prose prose-invert max-w-none text-[var(--text-secondary)] space-y-8 text-lg leading-relaxed">
-            <p className="text-xl text-[var(--text-primary)] font-medium italic">
-              {post.excerpt[lang]}
-            </p>
-            <p>
-              This is a placeholder for the blog post content. In a production environment, 
-              this would be populated from a Markdown file or a headless CMS. 
-              The surgical minimalism design ensures that the focus remains entirely 
-              on the typography and the quality of the content.
-            </p>
-            <h2 className="text-2xl font-headline font-bold text-[var(--text-primary)] pt-8">The core concept</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-              nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <div className="p-8 bg-[var(--bg-secondary)] border-l-2 border-l-[var(--accent)] font-code text-sm">
-              // Technical insight placeholder<br />
-              console.log("Engineering + Security = Quality");
-            </div>
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-              eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+          <div className="prose prose-invert max-w-none text-[var(--text-secondary)] space-y-8 text-lg leading-relaxed mt-12">
+            <ReactMarkdown>{post.content[lang]}</ReactMarkdown>
           </div>
         </motion.div>
       </div>
