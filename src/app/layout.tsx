@@ -33,6 +33,11 @@ export const metadata: Metadata = {
     description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
     images: ['https://eben-kambou.vercel.app/assets/thumbnail-final.jpeg'],
   },
+  icons: {
+    icon: '/assets/thumbnail-final.jpeg',
+    shortcut: '/favicon.ico',
+    apple: '/assets/thumbnail-final.jpeg',
+  },
 };
 
 export default function RootLayout({
