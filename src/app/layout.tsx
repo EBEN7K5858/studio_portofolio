@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     siteName: 'Sansan Eben-Ezer Portfolio',
     images: [
       {
-        url: 'https://eben-kambou.vercel.app/assets/profile.jpg?v=2',
+        url: 'https://eben-kambou.vercel.app/assets/profile.jpg?v=3',
         width: 1024,
-        height: 1024,
+        height: 944,
         alt: 'Sansan Eben-Ezer KAMBOU Profile',
       },
     ],
