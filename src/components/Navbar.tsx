@@ -48,75 +48,77 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-500 rounded-full px-8 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-6'}`}>
-      <div className="flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-3 group hover:scale-105 transition-transform">
-          <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--accent)]/50 group-hover:border-[var(--accent)] transition-colors">
-            <Image 
-              src="/assets/profile.jpg" 
-              alt="Sansan Eben-Ezer KAMBOU Profile" 
-              fill 
-              sizes="40px"
-              className="object-cover"
-            />
+    <>
+      <nav className={`fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-500 rounded-full px-8 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-6'}`}>
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-3 group hover:scale-105 transition-transform">
+            <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--accent)]/50 group-hover:border-[var(--accent)] transition-colors">
+              <Image 
+                src="/assets/profile.jpg" 
+                alt="Sansan Eben-Ezer KAMBOU Profile" 
+                fill 
+                sizes="40px"
+                className="object-cover"
+              />
+            </div>
+            <span className="font-headline text-2xl font-bold tracking-tighter text-[var(--accent)] hidden sm:block">
+              SEK
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center space-x-10">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                href={link.href}
+                className={`text-xs font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-all relative group ${pathname === link.href ? 'text-[var(--accent)]' : 'text-[var(--text-secondary)]'}`}
+              >
+                {link.name}
+                <span className={`absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent)] transition-all duration-300 group-hover:w-full ${pathname === link.href ? 'w-full' : ''}`} />
+              </Link>
+            ))}
           </div>
-          <span className="font-headline text-2xl font-bold tracking-tighter text-[var(--accent)] hidden sm:block">
-            SEK
-          </span>
-        </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center space-x-10">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className={`text-xs font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-all relative group ${pathname === link.href ? 'text-[var(--accent)]' : 'text-[var(--text-secondary)]'}`}
+          <div className="hidden lg:flex items-center space-x-5">
+            <LangToggle />
+            <ThemeToggle />
+            <a 
+              href="/assets/CV_Sansan_KAMBOU.pdf" 
+              download
+              className="btn-primary py-2.5 px-6 text-[10px] uppercase tracking-widest flex items-center space-x-2"
             >
-              {link.name}
-              <span className={`absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent)] transition-all duration-300 group-hover:w-full ${pathname === link.href ? 'w-full' : ''}`} />
-            </Link>
-          ))}
-        </div>
+              <Download className="w-3 h-3" />
+              <span>{t.nav.cv}</span>
+            </a>
+          </div>
 
-        <div className="hidden lg:flex items-center space-x-5">
-          <LangToggle />
-          <ThemeToggle />
-          <a 
-            href="/assets/CV_Sansan_KAMBOU.pdf" 
-            download
-            className="btn-primary py-2.5 px-6 text-[10px] uppercase tracking-widest flex items-center space-x-2"
+          {/* Mobile Toggle */}
+          <button 
+            className="lg:hidden p-3 glass rounded-full text-[var(--text-primary)]"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
-            <Download className="w-3 h-3" />
-            <span>{t.nav.cv}</span>
-          </a>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile Toggle */}
-        <button 
-          className="lg:hidden p-3 glass rounded-full text-[var(--text-primary)]"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - OUTSIDE of the -translate-x-1/2 parent */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <div className="fixed inset-0 z-[100] lg:hidden">
             {/* Very Dark Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-[#0A0A0B]/90 backdrop-blur-xl z-[90] lg:hidden"
+              className="absolute inset-0 bg-[#0A0A0B]/90 backdrop-blur-xl"
             />
             
-            {/* Menu Card */}
-            <div className="fixed inset-0 z-[100] lg:hidden flex items-center justify-center p-6 pointer-events-none">
+            {/* Menu Card Container (Centers the card) */}
+            <div className="absolute inset-0 flex items-center justify-center p-6 pointer-events-none">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -168,10 +170,10 @@ const Navbar = () => {
                 </div>
               </motion.div>
             </div>
-          </>
+          </div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
