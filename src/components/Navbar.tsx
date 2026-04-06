@@ -127,7 +127,7 @@ const Navbar = () => {
               </button>
             </div>
             
-            <nav className="flex flex-col space-y-8">
+            <nav className="flex flex-col space-y-7">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
@@ -146,18 +146,20 @@ const Navbar = () => {
               ))}
             </nav>
             
-            <div className="mt-auto pt-20 border-t border-[var(--accent)]/10 flex flex-col space-y-10">
-              <div className="flex items-center space-x-12 px-2">
-                <LangToggle />
-                <ThemeToggle />
-              </div>
+            <div className="mt-12 pt-12 border-t border-[var(--accent)]/10 flex flex-col space-y-10">
               <a 
                 href="/assets/CV_Sansan_KAMBOU.pdf" 
                 download
-                className="btn-primary py-5 px-10 text-center text-sm rounded-full w-full font-bold shadow-2xl"
+                className="btn-primary py-5 px-10 text-center text-sm rounded-full w-full font-bold shadow-2xl flex items-center justify-center space-x-3"
               >
-                {t.nav.cv}
+                <Download className="w-5 h-5" />
+                <span>{t.nav.cv}</span>
               </a>
+              
+              <div className="flex items-center space-x-12 px-2 pb-10">
+                <LangToggle />
+                <ThemeToggle />
+              </div>
             </div>
           </motion.div>
         )}
