@@ -122,7 +122,7 @@ export const projects: Project[] = [
   {
     slug: 'chadah-academy',
     number: '03',
-    status: 'In Progress',
+    status: 'Live',
     title: 'Chadah Academy Pipeline',
     subtitle: {
       en: 'AI-generated curriculum for a music e-learning platform',
@@ -170,7 +170,7 @@ export const projects: Project[] = [
   {
     slug: 'content-pipeline',
     number: '04',
-    status: 'In Progress',
+    status: 'Live',
     title: 'Automated Content Production Pipeline',
     subtitle: {
       en: 'Recurring generation and multi-channel distribution of structured content',
