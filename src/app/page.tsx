@@ -206,11 +206,11 @@ export default function Home() {
             className="relative"
           >
             <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[var(--radius)] glass p-3">
-              <Image
-                src="/assets/profile.jpg"
-                alt="Sansan Eben-Ezer KAMBOU"
+              <Image 
+                src="/assets/thumbnail-final.jpeg" 
+                alt="Sansan Eben-Ezer KAMBOU Profile"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 500px"
                 className="object-cover rounded-[calc(var(--radius)-1rem)]"
                 priority
               />

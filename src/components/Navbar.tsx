@@ -57,7 +57,7 @@ const Navbar = () => {
         <Link href="/" className="flex items-center space-x-3 group hover:scale-105 transition-transform">
           <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--accent)]/50 group-hover:border-[var(--accent)] transition-colors">
             <Image 
-              src="/assets/profile.jpg" 
+              src="/assets/thumbnail-final.jpeg" 
               alt="Sansan Eben-Ezer KAMBOU Profile" 
               fill 
               sizes="40px"
