@@ -93,46 +93,34 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] glass rounded-[2rem] z-[60] lg:hidden flex flex-col p-6 max-h-[85vh] overflow-y-auto shadow-3xl"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            className="fixed inset-0 bg-[var(--bg-primary)] z-[60] lg:hidden flex flex-col p-10 overflow-y-auto"
           >
-            <div className="flex justify-between items-center mb-8">
-              <div className="flex items-center space-x-3">
-                <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--accent)]/50">
-                  <Image 
-                    src="/assets/profile.jpg" 
-                    alt="Sansan Eben-Ezer KAMBOU Profile" 
-                    fill 
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
-                <span className="font-headline text-2xl font-bold text-[var(--accent)]">SEK</span>
-              </div>
+            <div className="flex justify-between items-center mb-20">
+              <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
               <button 
                 onClick={() => setIsOpen(false)} 
+                className="p-4 glass rounded-full"
                 aria-label="Close menu"
-                className="p-2.5 glass rounded-full"
               >
-                <X className="w-6 h-6" />
+                <X className="w-8 h-8" />
               </button>
             </div>
             
-            <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-8">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
                 >
                   <Link 
                     href={link.href}
                     onClick={handleLinkClick}
-                    className="text-3xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block"
+                    className="text-4xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -140,20 +128,18 @@ const Navbar = () => {
               ))}
             </div>
             
-            <div className="mt-8 pt-6 border-t border-[var(--accent)]/10 flex flex-col space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex space-x-4">
-                  <LangToggle />
-                  <ThemeToggle />
-                </div>
-                <a 
-                  href="/assets/CV_Sansan_KAMBOU.pdf" 
-                  download
-                  className="btn-primary py-3 px-6 text-xs rounded-full"
-                >
-                  {t.nav.cv}
-                </a>
+            <div className="mt-auto pt-20 flex flex-col space-y-10">
+              <div className="flex items-center space-x-8">
+                <LangToggle />
+                <ThemeToggle />
               </div>
+              <a 
+                href="/assets/CV_Sansan_KAMBOU.pdf" 
+                download
+                className="btn-primary py-5 px-10 text-center text-sm rounded-full w-full"
+              >
+                {t.nav.cv}
+              </a>
             </div>
           </motion.div>
         )}

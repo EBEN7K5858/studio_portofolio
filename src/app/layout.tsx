@@ -8,12 +8,13 @@ import CustomCursor from '@/components/CustomCursor';
 import LoadingScreen from '@/components/LoadingScreen';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://eben-kambou.vercel.app'),
   title: 'Sansan Eben-Ezer KAMBOU | Portfolio',
   description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
   openGraph: {
     title: 'Sansan Eben-Ezer KAMBOU | Portfolio',
     description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
-    url: 'https://studio-portofolio-phi.vercel.app',
+    url: 'https://eben-kambou.vercel.app',
     siteName: 'Sansan Eben-Ezer Portfolio',
     images: [
       {
