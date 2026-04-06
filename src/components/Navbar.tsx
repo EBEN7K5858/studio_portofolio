@@ -93,16 +93,16 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-[#0A0A0B] z-[100] lg:hidden flex flex-col p-8 sm:p-12 h-screen w-screen"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            className="fixed inset-0 bg-[var(--bg-primary)]/95 backdrop-blur-2xl z-[100] lg:hidden flex flex-col p-8 sm:p-12 h-screen w-screen"
           >
             <div className="flex justify-between items-center mb-12">
               <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
               <button 
                 onClick={() => setIsOpen(false)} 
-                className="p-4 bg-white/5 rounded-full text-white"
+                className="p-4 glass rounded-full text-[var(--text-primary)]"
                 aria-label="Close menu"
               >
                 <X className="w-8 h-8" />
@@ -120,7 +120,7 @@ const Navbar = () => {
                   <Link 
                     href={link.href}
                     onClick={handleLinkClick}
-                    className="text-4xl font-headline font-bold text-white hover:text-[var(--accent)] transition-colors block"
+                    className="text-4xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block"
                   >
                     {link.name}
                   </Link>
@@ -128,7 +128,7 @@ const Navbar = () => {
               ))}
             </nav>
             
-            <div className="mt-12 pt-12 border-t border-white/10 flex flex-col space-y-8">
+            <div className="mt-12 pt-12 border-t border-[var(--accent)]/10 flex flex-col space-y-8">
               <div className="flex items-center space-x-8">
                 <LangToggle />
                 <ThemeToggle />
