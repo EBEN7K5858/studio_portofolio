@@ -10,6 +10,28 @@ import LoadingScreen from '@/components/LoadingScreen';
 export const metadata: Metadata = {
   title: 'Sansan Eben-Ezer KAMBOU | Portfolio',
   description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
+  openGraph: {
+    title: 'Sansan Eben-Ezer KAMBOU | Portfolio',
+    description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
+    url: 'https://studio-portofolio-phi.vercel.app',
+    siteName: 'Sansan Eben-Ezer Portfolio',
+    images: [
+      {
+        url: '/assets/profile.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sansan Eben-Ezer KAMBOU Profile',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sansan Eben-Ezer KAMBOU | Portfolio',
+    description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
+    images: ['/assets/profile.jpg'],
+  },
 };
 
 export default function RootLayout({
