@@ -92,56 +92,70 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            className="fixed inset-0 bg-[var(--bg-primary)]/95 backdrop-blur-2xl z-[100] lg:hidden flex flex-col p-8 sm:p-12 h-screen w-screen"
-          >
-            <div className="flex justify-between items-center mb-12">
-              <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
-              <button 
-                onClick={() => setIsOpen(false)} 
-                className="p-4 glass rounded-full text-[var(--text-primary)]"
-                aria-label="Close menu"
-              >
-                <X className="w-8 h-8" />
-              </button>
-            </div>
+          <>
+            {/* Dark Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[90] lg:hidden"
+            />
             
-            <nav className="flex flex-col space-y-6">
-              {navLinks.map((link, idx) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1 }}
+            {/* Menu Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20, x: '-50%' }}
+              animate={{ opacity: 1, scale: 1, y: 0, x: '-50%' }}
+              exit={{ opacity: 0, scale: 0.9, y: 20, x: '-50%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="fixed top-1/2 left-1/2 w-[92%] max-w-[400px] glass z-[100] lg:hidden flex flex-col p-8 rounded-[3rem] shadow-3xl max-h-[85vh] overflow-y-auto"
+              style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+            >
+              <div className="flex justify-between items-center mb-10">
+                <span className="font-headline text-2xl font-bold text-[var(--accent)]">SEK</span>
+                <button 
+                  onClick={() => setIsOpen(false)} 
+                  className="p-3 bg-white/10 rounded-full text-[var(--text-primary)]"
+                  aria-label="Close menu"
                 >
-                  <Link 
-                    href={link.href}
-                    onClick={handleLinkClick}
-                    className="text-4xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block"
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-            
-            <div className="mt-12 pt-12 border-t border-[var(--accent)]/10 flex flex-col space-y-8">
-              <div className="flex items-center space-x-8">
-                <LangToggle />
-                <ThemeToggle />
+                  <X className="w-6 h-6" />
+                </button>
               </div>
-              <a 
-                href="/assets/CV_Sansan_KAMBOU.pdf" 
-                download
-                className="btn-primary py-4 px-10 text-center text-sm rounded-full w-full font-bold"
-              >
-                {t.nav.cv}
-              </a>
-            </div>
-          </motion.div>
+              
+              <nav className="flex flex-col space-y-4">
+                {navLinks.map((link, idx) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <Link 
+                      href={link.href}
+                      onClick={handleLinkClick}
+                      className="text-3xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block py-2"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+              
+              <div className="mt-8 pt-8 border-t border-[var(--accent)]/10 flex flex-col space-y-8">
+                <div className="flex items-center space-x-6">
+                  <LangToggle />
+                  <ThemeToggle />
+                </div>
+                <a 
+                  href="/assets/CV_Sansan_KAMBOU.pdf" 
+                  download
+                  className="btn-primary py-4 px-10 text-center text-sm rounded-full w-full font-bold shadow-xl"
+                >
+                  {t.nav.cv}
+                </a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
