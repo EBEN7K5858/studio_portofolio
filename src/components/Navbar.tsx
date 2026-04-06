@@ -89,46 +89,46 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            className="fixed inset-0 bg-[var(--bg-primary)] z-[60] lg:hidden flex flex-col p-10 overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-[#0A0A0B] z-[100] lg:hidden flex flex-col p-8 sm:p-12 h-screen w-screen"
           >
-            <div className="flex justify-between items-center mb-20">
+            <div className="flex justify-between items-center mb-12">
               <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
               <button 
                 onClick={() => setIsOpen(false)} 
-                className="p-4 glass rounded-full"
+                className="p-4 bg-white/5 rounded-full text-white"
                 aria-label="Close menu"
               >
                 <X className="w-8 h-8" />
               </button>
             </div>
             
-            <div className="flex flex-col space-y-8">
+            <nav className="flex flex-col space-y-6">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.05 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
                 >
                   <Link 
                     href={link.href}
                     onClick={handleLinkClick}
-                    className="text-4xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+                    className="text-4xl font-headline font-bold text-white hover:text-[var(--accent)] transition-colors block"
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-            </div>
+            </nav>
             
-            <div className="mt-auto pt-20 flex flex-col space-y-10">
+            <div className="mt-12 pt-12 border-t border-white/10 flex flex-col space-y-8">
               <div className="flex items-center space-x-8">
                 <LangToggle />
                 <ThemeToggle />
@@ -136,7 +136,7 @@ const Navbar = () => {
               <a 
                 href="/assets/CV_Sansan_KAMBOU.pdf" 
                 download
-                className="btn-primary py-5 px-10 text-center text-sm rounded-full w-full"
+                className="btn-primary py-4 px-10 text-center text-sm rounded-full w-full font-bold"
               >
                 {t.nav.cv}
               </a>
