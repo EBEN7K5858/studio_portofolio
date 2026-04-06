@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     siteName: 'Sansan Eben-Ezer Portfolio',
     images: [
       {
-        url: 'https://eben-kambou.vercel.app/assets/profile.jpg?v=3',
-        width: 1024,
-        height: 944,
+        url: 'https://eben-kambou.vercel.app/assets/profil2.jpeg?v=4',
+        width: 949,
+        height: 948,
         alt: 'Sansan Eben-Ezer KAMBOU Profile',
       },
     ],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sansan Eben-Ezer KAMBOU | Portfolio',
     description: 'Computer Engineering Student & Aspiring Cybersecurity Analyst',
-    images: ['https://eben-kambou.vercel.app/assets/profile.jpg?v=2'],
+    images: ['https://eben-kambou.vercel.app/assets/profil2.jpeg?v=4'],
   },
 };
 
