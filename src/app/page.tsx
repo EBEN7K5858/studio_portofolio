@@ -122,9 +122,9 @@ export default function Home() {
             </motion.p>
             <motion.h1
               variants={fadeInUp}
-              className="text-hero font-bold tracking-tighter mb-10 whitespace-pre-line leading-tight"
+              className="text-hero font-bold tracking-tighter mb-6 md:mb-10 leading-tight"
             >
-              {t.hero.title1} <span className="text-[var(--accent)]">{lang === 'en' ? 'things' : 'des choses'}</span>{"\n"}{t.hero.title2}
+              {t.hero.title1} <span className="text-[var(--accent)]">{lang === 'en' ? 'things' : 'des choses'}</span> {t.hero.title2}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
@@ -196,8 +196,8 @@ export default function Home() {
       </section>
 
       {/* 2. ABOUT SECTION */}
-      <section id="about" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/10 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
+      <section id="about" className="py-24 md:py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/10 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -241,7 +241,7 @@ export default function Home() {
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>{t.about.p3}</motion.p>
             </div>
 
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
               {[
                 { val: '4+', lbl: t.about.stat1 },
                 { val: '2nd', lbl: t.about.stat2 },
@@ -253,9 +253,9 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="p-10 glass rounded-[var(--radius)] flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
+                  className="p-6 md:p-10 glass rounded-[var(--radius)] flex md:flex-col items-center md:text-center hover:scale-105 transition-transform duration-300 gap-6 md:gap-3"
                 >
-                  <div className="text-4xl font-headline font-bold text-[var(--accent)] mb-3">{stat.val}</div>
+                  <div className="text-3xl md:text-4xl font-headline font-bold text-[var(--accent)]">{stat.val}</div>
                   <div className="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-code leading-tight font-bold">{stat.lbl}</div>
                 </motion.div>
               ))}
@@ -265,14 +265,14 @@ export default function Home() {
       </section>
 
       {/* 3. TECH STACK SECTION */}
-      <section id="stack" className="py-40 px-6 md:px-12 overflow-hidden relative">
+      <section id="stack" className="py-24 md:py-40 px-6 md:px-12 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-32">
+          <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.stack.label}</motion.p>
             <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold">{t.stack.title}</motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24">
             {[
               { title: t.stack.cat1, items: stack.cat1 },
               { title: t.stack.cat2, items: stack.cat2 },
@@ -284,7 +284,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2 }}
-                className="glass p-12 rounded-[var(--radius)] hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[var(--accent)]/10"
+                className="glass p-8 md:p-12 rounded-[var(--radius)] hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[var(--accent)]/10"
               >
                 <h3 className="text-2xl font-headline font-bold mb-12 flex items-center justify-center text-[var(--accent)]">
                   {cat.title}
@@ -306,9 +306,9 @@ export default function Home() {
       </section>
 
       {/* 4. PROJECTS SECTION */}
-      <section id="projects" className="py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/5 overflow-hidden relative">
+      <section id="projects" className="py-24 md:py-40 px-6 md:px-12 bg-[var(--bg-secondary)]/5 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-32 gap-10">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-20 md:mb-32 gap-10">
             <div>
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.projects.label}</motion.p>
               <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold">{t.projects.title}</motion.h2>
@@ -318,7 +318,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
             {projects.map((project, idx) => (
               <ProjectCard key={project.slug} project={project} index={idx} />
             ))}
@@ -327,9 +327,9 @@ export default function Home() {
       </section>
 
       {/* 5. WRITING SECTION */}
-      <section id="blog" className="py-40 px-6 md:px-12 overflow-hidden relative">
+      <section id="blog" className="py-24 md:py-40 px-6 md:px-12 overflow-hidden relative">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-32 gap-10">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-20 md:mb-32 gap-10">
             <div>
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.writing.label}</motion.p>
               <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold">{t.writing.title}</motion.h2>
@@ -339,7 +339,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {blogPosts.map((post, idx) => (
               <BlogCard key={post.slug} post={post} index={idx} />
             ))}
