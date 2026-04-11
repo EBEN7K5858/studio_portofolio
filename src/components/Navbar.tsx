@@ -64,9 +64,10 @@ const Navbar = () => {
               className="object-cover"
             />
           </div>
-          <span className="font-headline text-2xl font-bold tracking-tighter text-[var(--accent)] hidden sm:block">
-            SEK
-          </span>
+          <div className="hidden sm:flex flex-col leading-tight">
+            <span className="font-headline text-sm font-bold tracking-tighter text-[var(--accent)]">KAMBOU SANSAN</span>
+            <span className="font-headline text-xs font-bold tracking-tighter text-[var(--accent)]">EBEN-EZER</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -117,7 +118,9 @@ const Navbar = () => {
             className="fixed inset-0 bg-[var(--bg-primary)]/95 backdrop-blur-2xl z-[100] lg:hidden flex flex-col p-10 h-screen w-screen overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-16">
-              <span className="font-headline text-3xl font-bold text-[var(--accent)]">SEK</span>
+              <span className="font-headline text-2xl font-bold text-[var(--accent)] leading-tight">
+                KAMBOU SANSAN<br />EBEN-EZER
+              </span>
               <button 
                 onClick={() => setIsOpen(false)} 
                 className="p-4 glass rounded-full text-[var(--text-primary)]"
