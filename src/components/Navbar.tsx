@@ -64,9 +64,11 @@ const Navbar = () => {
               className="object-cover"
             />
           </div>
-          <span className="font-headline text-sm font-bold tracking-tighter text-[var(--accent)] hidden sm:block whitespace-nowrap uppercase">
-            KAMBOU SANSAN EBEN-EZER
-          </span>
+          <div className="hidden sm:flex flex-col leading-none font-headline text-[var(--accent)]">
+            <span className="text-sm font-bold tracking-tighter uppercase">KAMBOU</span>
+            <span className="text-sm font-bold tracking-tighter uppercase">SANSAN</span>
+            <span className="text-sm font-bold tracking-tighter uppercase">EBEN-EZER</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
