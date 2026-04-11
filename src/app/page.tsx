@@ -157,6 +157,16 @@ export default function Home() {
             className="hidden lg:block lg:col-span-4 animate-float"
           >
             <div className="terminal-card p-10 min-h-[350px] relative">
+              <div className="absolute -top-16 left-0 w-full mb-6">
+                <motion.h2 
+                  className="font-headline text-3xl font-bold text-[var(--text-primary)] tracking-tighter leading-none"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  KAMBOU SANSAN<br />EBEN-EZER
+                </motion.h2>
+              </div>
               <div className="flex space-x-3 mb-10">
                 <div className="w-4 h-4 rounded-full bg-red-500/40" />
                 <div className="w-4 h-4 rounded-full bg-amber-500/40" />
