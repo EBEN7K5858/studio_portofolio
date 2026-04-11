@@ -66,7 +66,7 @@ export default function Home() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://formspree.io/f/mojpyywn', { 
+      const response = await fetch('https://formspree.io/f/mojpyywn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -206,8 +206,8 @@ export default function Home() {
             className="relative"
           >
             <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[var(--radius)] glass p-3">
-              <Image 
-                src="/assets/thumbnail-final.jpeg" 
+              <Image
+                src="/assets/thumbnail-final.jpeg"
                 alt="Sansan Eben-Ezer KAMBOU Profile"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
@@ -352,18 +352,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div>
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-code text-xs text-[var(--accent)] mb-8 tracking-[0.3em]">{t.contact.label}</motion.p>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               className="text-4xl md:text-6xl mb-12 font-bold leading-tight"
             >
               {t.contact.title}
             </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="text-xl md:text-2xl text-[var(--text-secondary)] mb-16 max-w-xl leading-relaxed font-light"
             >
@@ -376,28 +376,28 @@ export default function Home() {
                 { name: 'LinkedIn', val: 'Eben-Ezer KAMBOU', href: 'https://www.linkedin.com/in/eben-ezer-kambou-63594321b', color: '#0077B5', icon: Linkedin },
                 { name: 'GitHub', val: 'EBEN7K5858', href: 'https://github.com/EBEN7K5858', color: 'currentColor', icon: Github }
               ].map((link, i) => (
-                <motion.div 
-                  key={i} 
-                  initial={{ opacity: 0, x: -20 }} 
-                  whileInView={{ opacity: 1, x: 0 }} 
-                  viewport={{ once: true }} 
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   className="flex items-center space-x-6 group"
                 >
-               <div className="w-14 h-14 rounded-2xl bg-[var(--bg-primary)] border border-[var(--accent)]/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[var(--accent)]/30 transition-all duration-300 shadow-xl">
-                  <link.icon className="w-7 h-7 transition-colors duration-300" style={{ color: link.color }} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-code text-[var(--text-muted)] uppercase tracking-[0.2em] mb-1 font-bold">{link.name}</p>
-                  <a 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-lg md:text-xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors break-all md:break-normal"
-                  >
-                    {link.val}
-                  </a>
-                </div>
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--bg-primary)] border border-[var(--accent)]/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[var(--accent)]/30 transition-all duration-300 shadow-xl">
+                    <link.icon className="w-7 h-7 transition-colors duration-300" style={{ color: link.color }} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-code text-[var(--text-muted)] uppercase tracking-[0.2em] mb-1 font-bold">{link.name}</p>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg md:text-xl font-headline font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors break-all md:break-normal"
+                    >
+                      {link.val}
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </div>
